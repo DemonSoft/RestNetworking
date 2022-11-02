@@ -33,7 +33,7 @@ class NetworkBase {
     
     func request(type:HttpType = .GET, params:Encodable? = nil) {
         
-        Task {
+        Task(priority: .background) {
             var encodedData: Data? = nil
             if let params = params, let data = try? JSONEncoder().encode(params) {
                 encodedData = data
